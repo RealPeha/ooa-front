@@ -1,10 +1,16 @@
 .page {
+
+}
+
+.slide {
     width: 100%;
-	min-height: 100%;
-    background-image: url(../../static/bg.jpg);
+	height: 100vh;
+    background-image: url(../../static/bg2.webp);
     background-position: center center;
     background-size: cover;
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .content {
@@ -20,20 +26,30 @@
     font-size: 60px;
     text-shadow: 1px 2px 5px #000;
     text-align: center;
+    letter-spacing: 5px;
+    margin-bottom: 0;
 }
 
-.about {
+.info {
     text-align: center;
     font-size: 25px;
     line-height: 1.25;
+    font-family: 'Apple Melon', Arial, Helvetica, sans-serif;
+    margin-top: 0;
+}
+
+.info span {
+    font-size: 70px;
 }
 
 .menu {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.menu-link {
+.menu .menu-link {
     text-decoration: none;
     color: #fff;
     display: block;
@@ -42,23 +58,29 @@
     text-transform: uppercase;
     border: 1px solid #9c9c9c;
     background: transparent;
-    margin: 0 10px;
-    backdrop-filter: blur(2px);
+    margin: 10px;
+    backdrop-filter: blur(5px);
     transition: border-color .2s;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.menu-link.filled {
+.menu .menu-link.filled {
     background: tomato;
     border: none;
     transition: all .2s;
 }
 
-.menu-link:hover {
+.menu .menu-link:hover {
     border-color: #fff;
 }
 
-.menu-link.filled:hover {
+.menu .menu-link.filled:hover {
     border: none;
     background: #fff;
     color: #000;
+}
+
+.go {
+    cursor: pointer;
+    opacity: .1;
 }

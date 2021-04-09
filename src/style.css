@@ -1,3 +1,15 @@
+@font-face {
+	font-family: 'Minecraft';
+	src: local('Minecraft'),
+		url(./fonts/Minecraft.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Apple Melon';
+	src: local('Apple Melon'),
+		url(./fonts/AppleMelon.ttf) format('truetype');
+}
+
 * {
   	box-sizing: border-box;
 }
@@ -5,7 +17,7 @@
 body,
 #___gatsby,
 #gatsby-focus-wrapper {
-	height: 100vh;
+	min-height: 100vh;
 }
 
 html,
@@ -13,5 +25,27 @@ body {
 	margin: 0;
 	padding: 0;
 	font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Minecraft, Arial, Helvetica, sans-serif;
+	scroll-behavior: smooth;
+	overflow: hidden;
+}
+
+@keyframes bubblingUp {
+    0% {
+        bottom: -200px;
+    }
+
+    100% {
+        bottom: 100%;
+    }
+}
+
+@keyframes sideWays { 
+    0% { 
+        margin-left: -50px;
+    }
+
+    100% { 
+        margin-left: 50px;
+    }
 }
