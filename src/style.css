@@ -32,11 +32,21 @@ body {
 
 @keyframes bubblingUp {
     0% {
-        bottom: -200px;
+        bottom: -50%;
     }
 
     100% {
-        bottom: 100%;
+        bottom: 120%;
+    }
+}
+
+@keyframes bubblingDown {
+    0% {
+        top: -50%;
+    }
+
+    100% {
+        top: 120%;
     }
 }
 

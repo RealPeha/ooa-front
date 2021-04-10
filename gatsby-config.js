@@ -1,5 +1,5 @@
 module.exports = {
-	pathPrefix: '/',
+	pathPrefix: '/ooa-front',
 	siteMetadata: {
 		title: 'Mine',
 	},

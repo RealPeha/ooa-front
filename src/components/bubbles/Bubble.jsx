@@ -17,25 +17,16 @@ const randomFloat = (min, max) => {
 }
 
 const Bubble = ({ dir }) => {
-  const size = random(70, 150)
+  const size = random(40, 100)
   const bubbleImg = bubbleImgs[random(0, bubbleImgs.length - 1)]
+  const animationName = dir ? 'bubblingUp' : 'bubblingDown'
 
-  let style = {}
-
-  if (dir) {
-    style = {
-      width: `${size}px`,
-      height: `${size}px`,
-      left: `${random(-size / 2, window.innerWidth - size / 2)}px`,
-      animation: `bubblingUp ${randomFloat(0.4, 0.8)}s linear, sideWays ${randomFloat(0.4, 1)}s ease-in-out infinite alternate`,
-    }
-  } else {
-    style = {
-      width: `${size}px`,
-      height: `${size}px`,
-      left: `${random(-size / 2, window.innerWidth - size / 2)}px`,
-      animation: `bubblingDown ${randomFloat(0.4, 0.8)}s linear, sideWays ${randomFloat(0.4, 1)}s ease-in-out infinite alternate`,
-    }
+  const style = {
+    width: `${size}px`,
+    height: `${size}px`,
+    left: `${random(-size / 2, window.innerWidth - size / 2)}px`,
+    animation: `${animationName} ${randomFloat(0.5, 1)}s linear, sideWays ${randomFloat(0.3, 0.7)}s ease-in-out infinite alternate`,
+    ...(dir ? { bottom: '-25%' } : { top: '-25%' }),
   }
 
   return (
