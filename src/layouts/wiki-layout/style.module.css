@@ -1,7 +1,3 @@
-body {
-    overflow: auto;
-}
-
 .page {
     width: 100%;
 	min-height: 100vh;
@@ -18,11 +14,15 @@ body {
     align-items: center;
 }
 
-.contentInner > h1 {
+.content-inner > h1 {
     font-size: 40px;
 }
 
 .content p, ol {
     font-size: 18px;
     line-height: 1.5;
+}
+
+.show-scroll {
+    overflow: auto;
 }
