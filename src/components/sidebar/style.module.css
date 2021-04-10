@@ -1,6 +1,25 @@
 .sidebar {
-    flex-basis: 200px;
+    min-width: 300px;
     background-color: #242e33;
     color: #fff;
+    border-right: 1px solid #34434b;
+}
+
+.header {
+	color: #ffa500;
+	text-align: center;
     padding: 20px;
+    border-bottom: 1px solid #34434b;
+}
+
+.menu {
+	display: flex;
+	flex-direction: column;
+    padding: 30px 20px 20px 40px;
+}
+
+.menu a {
+	color: #fff;
+	margin: 5px 0;
+	font-size: 18px;
 }

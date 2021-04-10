@@ -9,7 +9,7 @@ const WikiLayout = ({ children }) => {
     <div className={css.page}>
       <Sidebar />
       <div className={css.content}>
-        <div>
+        <div className={css.contentInner}>
           {children}
         </div>
       </div>
