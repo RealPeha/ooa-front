@@ -4,9 +4,10 @@ import ReactTooltip from 'react-tooltip'
 
 import * as css from './index.module.css'
 
+import bg from '../../static/bg2.webp'
+
 import clamp from '../utils/clamp'
 import throttle from '../utils/throttle'
-import usePrevious from '../utils/usePrevious'
 import copyToClipboard from '../utils/copyToClipboard'
 
 import Bubbles from '../components/bubbles/Bubbles'
@@ -14,11 +15,14 @@ import ArrowDown from '../components/icons/ArrowDown'
 import ArrowUp from '../components/icons/ArrowUp'
 
 const isBrowser = typeof window !== 'undefined'
+const SLIDES = 3
+const BUBBLES_MIN = 10
+const BUBBLES_MAX = 100
+const BUBBLES_AMOUNT_FACTOR = 25
 
 const IndexPage = () => {
   const [slide, setSlide] = useState(isBrowser ? localStorage.getItem('slide') || 0 : 0)
-  const prevSlideIndex = usePrevious(slide)
-  const [bubblesIsActive, setBubblesIsActive] = useState(false)
+  const [bubbles, setBubbles] = useState()
   const isScrolling = useRef(false)
   const timeout = useRef()
 
@@ -28,15 +32,16 @@ const IndexPage = () => {
     }
 
     setSlide(i => {
-      const newIndex = clamp(callback(i), 0, 2)
+      const index = typeof callback === 'function' ? callback(i) : callback
+      const newIndex = clamp(index, 0, SLIDES - 1)
 
       if (newIndex !== i) {
-        setBubblesIsActive(true)
+        setBubbles({ dir: newIndex - i })
 
         clearTimeout(timeout.current)
 
         timeout.current = setTimeout(() => {
-          setBubblesIsActive(false)
+          setBubbles()
         }, 1000)
       }
 
@@ -94,12 +99,15 @@ const IndexPage = () => {
     })
   }, [slide])
 
+  const bubblesAmount = isBrowser
+    ? clamp(Math.round(window.innerWidth / BUBBLES_AMOUNT_FACTOR), BUBBLES_MIN, BUBBLES_MAX)
+    : 0
+
   return (
     <div>
       <Bubbles
-        isActive={bubblesIsActive}
-        number={isBrowser ? clamp(Math.round(window.innerWidth / 20), 10, 150) : 0}
-        dir={slide > prevSlideIndex}
+        number={bubblesAmount}
+        dir={bubbles}
       />
       <div className={css.slide}>
         <div className={css.content}>
@@ -113,7 +121,11 @@ const IndexPage = () => {
             <Link to='/discord' className={css.menuLink}>Discord</Link>
             <Link to='/help' className={css.menuLink}>Help</Link>
             <Link to='/shop' className={css.menuLink}>Shop</Link>
-            <a href='#' className={`${css.menuLink} ${css.filled}`} onClick={() => setSlide(1)}>Play Now</a>
+            <a
+              href='#'
+              className={`${css.menuLink} ${css.filled}`}
+              onClick={() => setSlideIndex(1)}
+            >Play Now</a>
           </div>
         </div>
         <div className={css.go} onClick={nextSlide} >
