@@ -85,3 +85,34 @@ body {
     cursor: pointer;
     opacity: .1;
 }
+
+.ip {
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 50px;
+    text-transform: uppercase;
+    padding: 20px 30px;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+    transition: all 0.1s;
+}
+
+.ip:hover {
+    background: #fff;
+    color: #000;
+}
+
+.tooltip {
+    font-size: 20px !important;
+    background-color: rgba(97,97,97,.9) !important;
+    border-radius: 4px !important;
+}
+
+.tooltip::before, .tooltip::after {
+    border-bottom-color: rgba(97,97,97,.9) !important;
+}

@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'gatsby'
+import ReactTooltip from 'react-tooltip'
 
 import * as css from './index.module.css'
 
 import clamp from '../utils/clamp'
 import throttle from '../utils/throttle'
 import usePrevious from '../utils/usePrevious'
+import copyToClipboard from '../utils/copyToClipboard'
 
 import Bubbles from '../components/bubbles/Bubbles'
 import ArrowDown from '../components/icons/ArrowDown'
@@ -14,7 +16,7 @@ import ArrowUp from '../components/icons/ArrowUp'
 const isBrowser = typeof window !== 'undefined'
 
 const IndexPage = () => {
-  const [slide, setSlide] = useState(0)
+  const [slide, setSlide] = useState(isBrowser ? localStorage.getItem('slide') || 0 : 0)
   const prevSlideIndex = usePrevious(slide)
   const [bubblesIsActive, setBubblesIsActive] = useState(false)
   const isScrolling = useRef(false)
@@ -26,7 +28,7 @@ const IndexPage = () => {
     }
 
     setSlide(i => {
-      const newIndex = clamp(callback(i), 0, 4)
+      const newIndex = clamp(callback(i), 0, 2)
 
       if (newIndex !== i) {
         setBubblesIsActive(true)
@@ -37,6 +39,8 @@ const IndexPage = () => {
           setBubblesIsActive(false)
         }, 1000)
       }
+
+      localStorage.setItem('slide', newIndex)
 
       return newIndex
     })
@@ -106,10 +110,10 @@ const IndexPage = () => {
             Тысяча и один способ умереть под водой
           </p>
           <div className={css.menu}>
-            <a href='#' className={css.menuLink}>Discord</a>
+            <Link to='/discord' className={css.menuLink}>Discord</Link>
             <Link to='/help' className={css.menuLink}>Help</Link>
-            <a href='#' className={css.menuLink}>Shop</a>
-            <a href='#' className={`${css.menuLink} ${css.filled}`}>Play Now</a>
+            <Link to='/shop' className={css.menuLink}>Shop</Link>
+            <a href='#' className={`${css.menuLink} ${css.filled}`} onClick={() => setSlide(1)}>Play Now</a>
           </div>
         </div>
         <div className={css.go} onClick={nextSlide} >
@@ -121,29 +125,13 @@ const IndexPage = () => {
           <ArrowUp />
         </div>
         <div className={css.content}>
-          <h1 className={css.title}>wantid</h1>
-        </div>
-        <div className={css.go} onClick={nextSlide} >
-          <ArrowDown />
-        </div>
-      </div>
-      <div className={css.slide}>
-        <div className={css.go} onClick={prevSlide} >
-          <ArrowUp />
-        </div>
-        <div className={css.content}>
-          <h1 className={css.title}>loh</h1>
-        </div>
-        <div className={css.go} onClick={nextSlide} >
-          <ArrowDown />
-        </div>
-      </div>
-      <div className={css.slide}>
-        <div className={css.go} onClick={prevSlide} >
-          <ArrowUp />
-        </div>
-        <div className={css.content}>
-          <h1 className={css.title}>???</h1>
+          <ReactTooltip place='bottom' effect='solid' className={css.tooltip} />
+          <h1 className={css.title}>Play Now</h1>
+          <button
+            onClick={(e) => copyToClipboard(e.target.innerText.toLowerCase())}
+            className={css.ip}
+            data-tip='Нажми, чтобы скопировать'
+          >play.peha.fun</button>
         </div>
         <div className={css.go} onClick={nextSlide} >
           <ArrowDown />
