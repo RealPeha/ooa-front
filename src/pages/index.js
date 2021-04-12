@@ -15,7 +15,8 @@ import ArrowDown from '../components/icons/ArrowDown'
 import ArrowUp from '../components/icons/ArrowUp'
 
 const isBrowser = typeof window !== 'undefined'
-const SLIDES = 3
+
+const SLIDES = 5
 const BUBBLES_MIN = 10
 const BUBBLES_MAX = 100
 const BUBBLES_AMOUNT_FACTOR = 25
@@ -80,7 +81,7 @@ const IndexPage = () => {
 
       scrollingTimeout = setTimeout(() => {
         isScrolling.current = false
-      }, 400)
+      }, 500)
     }
 
     document.addEventListener('scroll', handleScroll)
@@ -110,6 +111,8 @@ const IndexPage = () => {
           number={bubblesAmount}
           dir={bubbles}
         />
+
+        {/* Home */}
         <div className={css.slide}>
           <div className={css.content}>
             <h1 className={css.title}>Ocean of Anarchy</h1>
@@ -134,12 +137,14 @@ const IndexPage = () => {
               >AQUA</a>
             </div>
           </div>
-          <div className={css.go} onClick={nextSlide} >
+          <div className={css.arrow} onClick={nextSlide} >
             <ArrowDown />
           </div>
         </div>
+
+        {/* Play Now */}
         <div className={css.slide}>
-          <div className={css.go} onClick={prevSlide} >
+          <div className={css.arrow} onClick={prevSlide} >
             <ArrowUp />
           </div>
           <div className={css.content}>
@@ -151,16 +156,65 @@ const IndexPage = () => {
               data-tip='Нажми, чтобы скопировать'
             >play.peha.fun</button>
           </div>
-          <div className={css.go} onClick={nextSlide} >
+          <div className={css.arrow} onClick={nextSlide} >
             <ArrowDown />
           </div>
         </div>
+
+        {/* What is AQUA */}
         <div className={css.slide}>
-          <div className={css.go} onClick={prevSlide} >
+          <div className={css.arrow} onClick={prevSlide} >
             <ArrowUp />
           </div>
           <div className={css.content}>
-            <h1 className={css.title}>Что такое Aqua?</h1>
+            <h1 className={css.title}>Что такое Aqua Token?</h1>
+            <div className={css.content}>
+              <div className={css.table}>
+                <div className={css.column}>
+                  <h3>Цифровая валюта сервера Ocean of Anarchy</h3>
+                  <p>
+                    Aqua Token - это цифровая валюта сервера Ocean of Anarchy
+                  </p>
+                  <Link to='/help/aqua' className={`${css.menuLink} ${css.filled}`}>Узнать больше</Link>
+                </div>
+                <div className={css.column}>
+                  <h3>Ну, точно что-то еще</h3>
+                  <p>
+                    Aqua Token - это что-то еще очень полезное, которое хотелось бы использовать не только на нашем сервере
+                  </p>
+                  <Link to='/help/aqua' className={`${css.menuLink} ${css.filled}`}>Узнать больше</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={css.arrow} onClick={nextSlide} >
+            <ArrowDown />
+          </div>
+        </div>
+
+        {/* How to get AQUA */}
+        <div className={css.slide}>
+          <div className={css.arrow} onClick={prevSlide} >
+            <ArrowUp />
+          </div>
+          <div className={css.content}>
+            <h1 className={css.title}>Как получить Aqua?</h1>
+            <div className={css.content}>
+              Yes
+            </div>
+          </div>
+          <div className={css.arrow} onClick={nextSlide} >
+            <ArrowDown />
+          </div>
+        </div>
+
+        {/* How to use AQUA */}
+        <div className={css.slide}>
+          <div className={css.arrow} onClick={prevSlide} >
+            <ArrowUp />
+          </div>
+          <div className={css.content}>
+            <h1 className={css.title}>Как использовать Aqua?</h1>
             <div className={css.content}>
               Yes
             </div>
