@@ -1,7 +1,7 @@
 @font-face {
 	font-family: 'Minecraft';
 	src: local('Minecraft'),
-		url(./fonts/Minecraft.ttf) format('truetype');
+		url(./fonts/MinecraftRU.ttf) format('truetype');
 }
 
 @font-face {

@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'gatsby'
 import ReactTooltip from 'react-tooltip'
+import { FormattedMessage } from 'react-intl'
 
 import * as css from './index.module.css'
-
-import bg from '../../static/bg2.webp'
 
 import clamp from '../utils/clamp'
 import throttle from '../utils/throttle'
 import copyToClipboard from '../utils/copyToClipboard'
 
+import App from '../App'
 import Bubbles from '../components/bubbles/Bubbles'
 import ArrowDown from '../components/icons/ArrowDown'
 import ArrowUp from '../components/icons/ArrowUp'
@@ -104,60 +104,70 @@ const IndexPage = () => {
     : 0
 
   return (
-    <div>
-      <Bubbles
-        number={bubblesAmount}
-        dir={bubbles}
-      />
-      <div className={css.slide}>
-        <div className={css.content}>
-          <h1 className={css.title}>Ocean of Anarchy</h1>
-          <p className={css.info}>
-            <span>или</span>
-            <br />
-            Тысяча и один способ умереть под водой
-          </p>
-          <div className={css.menu}>
-            <Link to='/discord' className={css.menuLink}>Discord</Link>
-            <Link to='/help' className={css.menuLink}>Help</Link>
-            <Link to='/shop' className={css.menuLink}>Shop</Link>
-            <a
-              href='#'
-              className={`${css.menuLink} ${css.filled}`}
-              onClick={() => setSlideIndex(1)}
-            >Play Now</a>
+    <App>
+      <div>
+        <Bubbles
+          number={bubblesAmount}
+          dir={bubbles}
+        />
+        <div className={css.slide}>
+          <div className={css.content}>
+            <h1 className={css.title}>Ocean of Anarchy</h1>
+            <p className={css.info}>
+              <span>или</span>
+              <br />
+              Тысяча и один способ умереть под водой
+            </p>
+            <div className={css.menu}>
+              <Link to='/discord' className={css.menuLink}>Discord</Link>
+              <Link to='/help' className={css.menuLink}>Help</Link>
+              <a
+                href='#'
+                className={`${css.menuLink} ${css.filled}`}
+                onClick={() => setSlideIndex(1)}
+              >Play Now</a>
+              <Link to='/shop' className={css.menuLink}>Shop</Link>
+              <a
+                href='#'
+                className={`${css.menuLink}`}
+                onClick={() => setSlideIndex(2)}
+              >AQUA</a>
+            </div>
+          </div>
+          <div className={css.go} onClick={nextSlide} >
+            <ArrowDown />
           </div>
         </div>
-        <div className={css.go} onClick={nextSlide} >
-          <ArrowDown />
+        <div className={css.slide}>
+          <div className={css.go} onClick={prevSlide} >
+            <ArrowUp />
+          </div>
+          <div className={css.content}>
+            <ReactTooltip place='bottom' effect='solid' className={css.tooltip} />
+            <h1 className={css.title}>Play Now</h1>
+            <button
+              onClick={(e) => copyToClipboard(e.target.innerText.toLowerCase())}
+              className={css.ip}
+              data-tip='Нажми, чтобы скопировать'
+            >play.peha.fun</button>
+          </div>
+          <div className={css.go} onClick={nextSlide} >
+            <ArrowDown />
+          </div>
+        </div>
+        <div className={css.slide}>
+          <div className={css.go} onClick={prevSlide} >
+            <ArrowUp />
+          </div>
+          <div className={css.content}>
+            <h1 className={css.title}>Что такое Aqua?</h1>
+            <div className={css.content}>
+              Yes
+            </div>
+          </div>
         </div>
       </div>
-      <div className={css.slide}>
-        <div className={css.go} onClick={prevSlide} >
-          <ArrowUp />
-        </div>
-        <div className={css.content}>
-          <ReactTooltip place='bottom' effect='solid' className={css.tooltip} />
-          <h1 className={css.title}>Play Now</h1>
-          <button
-            onClick={(e) => copyToClipboard(e.target.innerText.toLowerCase())}
-            className={css.ip}
-            data-tip='Нажми, чтобы скопировать'
-          >play.peha.fun</button>
-        </div>
-        <div className={css.go} onClick={nextSlide} >
-          <ArrowDown />
-        </div>
-      </div>
-      <div className={css.slide}>
-        <div className={css.go} onClick={prevSlide} >
-          <ArrowUp />
-        </div>
-        <div className={css.content}>
-          <h1 className={css.title}>🤔</h1>
-        </div>
-      </div>
-    </div>
+    </App>
   )
 }
 
