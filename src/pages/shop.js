@@ -8,14 +8,14 @@ import Product from '../components/product/Product'
 
 const products = [
   {
-    name: 'VIP',
-    price: '99,99',
+    name: 'VIPка',
+    price: 1,
     description: 'Это ВИПка, да, купи её пожалуйста',
     img: 'https://avatars.githubusercontent.com/u/26817340',
   },
   {
     name: 'Взлом жопы',
-    price: '123',
+    price: 123,
     description: 'Yes',
     img: 'https://avatars.githubusercontent.com/u/26817340',
   }
@@ -33,6 +33,7 @@ const ShopPage = () => {
           <div className={css.contentInner}>
             {products.map(product => (
               <Product
+                key={product.name}
                 name={product.name}
                 description={product.description}
                 price={product.price}

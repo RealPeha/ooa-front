@@ -30,7 +30,7 @@
 
 }
 
-.product button {
+.button {
 	margin-top: 0;
 	background-color: transparent;
 	color: #fff;
@@ -41,9 +41,10 @@
 	margin: 5px 0;
 	cursor: pointer;
 	transition: background-color 0.2s;
+	text-align: center;
 }
 
-.product button:hover {
+.button:hover {
 	background-color: #ffbb32;
 }
 
