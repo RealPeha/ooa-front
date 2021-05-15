@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{MUyx:function(e,t,n){"use strict";n.r(t);var r=n("q1tI"),a=n.n(r),c=n("qhky");t.default=function(){return a.a.createElement(c.a,null,a.a.createElement("meta",{"http-equiv":"refresh",content:"0;url=https://discord.gg/sNFNKrRC"}))}}}]);
-//# sourceMappingURL=component---src-pages-discord-js-4be8c7a5f732bb776f80.js.map
